@@ -1,0 +1,29 @@
+{
+  "name": "docker-dc-network-with-protocol",
+  "version": "0.1.0",
+  "description": "start ganache and deploy our contracts",
+  "main": "Dockerfile",
+  "scripts": {
+    "start"   : "sh start.sh",
+    "help"    : "echo 'Read: https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html'",
+    "login"   : "docker login -u alexstep",
+    "publish" : "sh publish_docker.sh v_0.1",
+    "test"    : "docker build -t dc_protocol_test ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/daocasino/SDK.git"
+  },
+  "keywords": [
+    "dao",
+    "casino",
+    "protocol",
+    "testrpc"
+  ],
+  "author": "alex.step@dao.casino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/daocasino/SDK/issues"
+  },
+  "homepage": "https://gitlab.com/daocasino/SDK#README"
+}
