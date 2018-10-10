@@ -1,14 +1,16 @@
 {
-  "name": "docker-dc-network-with-protocol",
+  "name": "dc-protocol",
   "version": "0.1.0",
-  "description": "start ganache and deploy our contracts",
-  "main": "Dockerfile",
+  "description": "Start ganache and deploy our contracts",
+  "main": "v_0.1/testrpc.sh",
   "scripts": {
-    "start"   : "sh start.sh",
-    "help"    : "echo 'Read: https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html'",
-    "login"   : "docker login -u alexstep",
-    "publish" : "sh publish_docker.sh v_0.1",
-    "test"    : "docker build -t dc_protocol_test ."
+    "start": "cd v_0.1 && sh testrpc.sh | sh migrate.sh",
+    "build": "cd v_0.1 && truffle compile",
+
+    "docker:login"   : "docker login -u alexstep",
+    "docker:run"     : "sh run_docker.sh",
+    "docker:publish" : "sh publish_docker.sh v_0.1",
+    "docker:test"    : "docker build -t dc_protocol_test ."
   },
   "repository": {
     "type": "git",
@@ -25,5 +27,10 @@
   "bugs": {
     "url": "https://gitlab.com/daocasino/SDK/issues"
   },
-  "homepage": "https://gitlab.com/daocasino/SDK#README"
+  "homepage": "https://gitlab.com/daocasino/SDK#README",
+
+  "dependencies": {
+    "truffle": "^5.0.0-beta.0",
+    "truffle-hdwallet-provider": "^1.0.0-web3one.0"
+  }
 }
