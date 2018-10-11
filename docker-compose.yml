@@ -2,11 +2,13 @@ version: "2.1"
 
 services:
   dc_protocol:
+    container_name: 
+      dc_protocol
     labels:
       - "testrpc with dao casino protocol contracts"
     build:
      ./
     ports:
-      - 1406:8545
+      - 8545:8545
     volumes:
-      - ./check_linked_contracts:/protocol
+      - ./v_0.1/build:/protocol
