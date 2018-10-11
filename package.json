@@ -6,10 +6,14 @@
   "scripts": {
     "start": "cd v_0.1 && sh testrpc.sh | sh migrate.sh",
     "build": "cd v_0.1 && truffle compile",
+    "clean": "rm -rf ./testrpc_db",
 
+    "docker:start"   : "docker-compose up -d && docker-compose ps",
+    "docker:stop"    : "docker-compose down && docker-compose ps",
+    "docker:logs"    : "docker logs -f dc_protocol",
     "docker:login"   : "docker login -u alexstep",
-    "docker:run"     : "sh run_docker.sh",
-    "docker:publish" : "sh publish_docker.sh v_0.1",
+    "docker:build"   : "sh docker_build.sh",
+    "docker:publish" : "sh docker_publish.sh v_0.1",
     "docker:test"    : "docker build -t dc_protocol_test ."
   },
   "repository": {
