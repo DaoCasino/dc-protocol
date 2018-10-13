@@ -2,7 +2,7 @@
   "name": "dc-protocol",
   "version": "0.1.0",
   "description": "Start ganache and deploy our contracts",
-  "main": "v_0.1/testrpc.sh",
+  "main": "v_0.1/index.js",
   "scripts": {
     "start": "cd v_0.1 && sh testrpc.sh | sh migrate.sh",
     "build": "cd v_0.1 && truffle compile",

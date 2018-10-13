@@ -1,3 +1,3 @@
-const contractAddresses = require("/build/addresses.json")
+const contractAddresses = require("./v_0.1/build/addresses.json")
 
-export { contractAddresses }
+module.exports = { contractAddresses }
