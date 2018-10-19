@@ -16,10 +16,6 @@
     "docker:publish" : "sh docker_publish.sh v_0.1",
     "docker:test"    : "docker build -t dc_protocol_test ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/daocasino/SDK.git"
-  },
   "keywords": [
     "dao",
     "casino",
@@ -28,10 +24,7 @@
   ],
   "author": "alex.step@dao.casino",
   "license": "MIT",
-  "bugs": {
-    "url": "https://gitlab.com/daocasino/SDK/issues"
-  },
-  "homepage": "https://gitlab.com/daocasino/SDK#README",
+
 
   "dependencies": {
     "truffle": "^5.0.0-beta.0",
