@@ -216,7 +216,7 @@ contract oneStepGame is gameInterface {
         Channel storage _channel = channels[_id];
         require(_close);
         address _signer = recoverSigner(keccak256(abi.encodePacked(_id, _playerBalance, _bankrollerBalance, _totalBet, _session, _close)), _sign);
-        require(_playerBalance.add(_bankrollerBalance) == _channel.playerBalance.add(_channel.bankrollerBalance));
+        // require(_playerBalance.add(_bankrollerBalance) == _channel.playerBalance.add(_channel.bankrollerBalance));
         require(_signer != msg.sender);
         require(_signer == _channel.player || _signer == _channel.bankroller);
         _channel.playerBalance = _playerBalance;
