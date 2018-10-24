@@ -1,5 +1,4 @@
 #!/bin/bash -e
-echo $1
 mkdir -p testrpc_db 
 
 npm start

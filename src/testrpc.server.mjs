@@ -4,7 +4,7 @@ let state = {}
 
 // more opts find in https://github.com/trufflesuite/ganache-cli/blob/develop/cli.js#L73
 const options = {
-  hostname : 'localhost',
+  hostname : '0.0.0.0',
   port     : 8545,
   verbose  : true,
   deterministic : false,
@@ -21,6 +21,8 @@ for(let k in options){
 }
 
 
+console.log('Start ganache server with opts:')
+console.table(options)
 
 // options.logger = {
 //   log (log) {
@@ -108,7 +110,6 @@ server.on('request', (req, res) => {
 
   const path = req.url.split('/')
   if ((path[1]==='contract' || path[1]==='contracts') && path[2]) {
-  if (path[1].indexOf('contract') > -1 && path[2]) {
     const contractName = path[2]
     if (getContractsAddresses()[path[2]]) {
       let contract = {}

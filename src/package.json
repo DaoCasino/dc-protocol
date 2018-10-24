@@ -13,7 +13,7 @@
   "main": "testrpc.server.mjs",
 
   "scripts": {
-    "start": "node  --experimental-repl-await --harmony testrpc.server.mjs",
+    "start": "node testrpc.server.mjs",
     "dev": "nodemon --watch ./ --experimental-repl-await --harmony testrpc.server.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
