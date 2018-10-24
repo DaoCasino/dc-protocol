@@ -3,7 +3,7 @@ FROM mhart/alpine-node:10
 MAINTAINER Alex Step <alex.step@dao.casino>
 
 RUN apk add --no-cache make gcc g++ python git && npm i -g yarn
-RUN yarn global truffle@beta
+RUN yarn global add truffle@beta
 
 # /protocol - foler to export with builded contracts, see entrypoint
 RUN mkdir -p /protocol
