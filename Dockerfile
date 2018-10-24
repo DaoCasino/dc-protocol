@@ -7,12 +7,12 @@ RUN mkdir -p /protocol
 
 # install requriments software
 RUN npm i -g npm@6 && \
-	npm i -g ganache-cli@6.1.8 \
 	npm i -g truffle@beta
 
 # copy our protcol scripts
-COPY ./v_0.1 /deploy_protocol
+COPY ./src /deploy_protocol
 WORKDIR /deploy_protocol
+RUN npm i
 
 # run ganache-cli and start truffle migrations
 RUN sh testrpc.sh & sh migrate.sh

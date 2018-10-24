@@ -1,0 +1,26 @@
+{
+  "name": "dc-ganache-server",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "to@alexstep.com",
+  "keywords": ["ethereum", "ganache"],
+  "description": "Run ganache testrpc server with custom API",
+
+  "engines": {
+    "node": ">=10.8"
+  },
+  "engineStrict": true,
+  "main": "testrpc.server.mjs",
+
+  "scripts": {
+    "start": "node  --experimental-repl-await --harmony testrpc.server.mjs",
+    "dev": "nodemon --watch ./ --experimental-repl-await --harmony testrpc.server.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  
+  "dependencies": {
+    "ganache-core": "^2.2.1"
+  },
+  "devDependencies": {
+  }
+}

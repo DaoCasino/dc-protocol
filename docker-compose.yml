@@ -11,4 +11,4 @@ services:
     ports:
       - 8545:8545
     volumes:
-      - ./v_0.1/build:/protocol
+      - ./src/build:/protocol
