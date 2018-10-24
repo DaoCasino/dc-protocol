@@ -2,17 +2,17 @@
   "name": "dc-protocol",
   "version": "1.0.2",
   "description": "Start ganache and deploy our contracts",
-  "main": "v_0.1/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "cd v_0.1 && sh testrpc.sh | sh migrate.sh",
-    "build": "cd v_0.1 && truffle compile",
+    "start": "cd src && sh testrpc.sh | sh migrate.sh",
+    "build": "cd src && truffle compile",
     "clean": "rm -rf ./testrpc_db",
     "docker:start": "docker-compose up -d && docker-compose ps",
     "docker:stop": "docker-compose down && docker-compose ps",
     "docker:logs": "docker logs -f dc_protocol",
     "docker:login": "docker login -u alexstep",
     "docker:build": "sh docker_build.sh",
-    "docker:publish": "sh docker_publish.sh v_0.1",
+    "docker:publish": "sh docker_publish.sh v_0.1.1",
     "docker:test": "docker build -t dc_protocol_test ."
   },
   "keywords": [
