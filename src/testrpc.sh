@@ -1,7 +1,6 @@
 #!/bin/bash -e
-mkdir -p testrpc_db 
-
-npm start
+mkdir -p testrpc_db
+node testrpc.server.mjs
 # ganache-cli -a 10 --host=0.0.0.0 --port=8545 \
 # --db=./testrpc_db \
 # --blockTime=2 \
