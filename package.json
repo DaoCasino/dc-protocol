@@ -3,6 +3,9 @@
   "version": "0.1.2",
   "description": "Start ganache and deploy our contracts",
   "main": "index.js",
+  "bin": {
+    "dc-protocol": "bin/CLI"
+  },
   "scripts": {
     "start": "cd src && sh testrpc.sh | sh migrate.sh",
     "build": "cd src && truffle compile",
@@ -24,7 +27,8 @@
   "author": "alex.step@dao.casino",
   "license": "MIT",
   "dependencies": {
-    "ganache-cli": "6.1.8",
+    "commander": "^2.19.0",
+    "ganache-core": "^2.2.1",
     "truffle": "^5.0.0-beta.0",
     "truffle-hdwallet-provider": "^1.0.0-web3one.0"
   },

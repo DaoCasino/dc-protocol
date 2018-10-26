@@ -16,10 +16,9 @@ const options = {
 }
 
 // Set opts from env if exist
-for(let k in options){
+for(let k in options) {
   options[k] = process.env[k] || options[k]
 }
-
 
 console.log('Start ganache server with opts:')
 console.table(options)
@@ -63,6 +62,7 @@ const toHHMMSS = function (str) {
     var time    = hours+':'+minutes+':'+seconds;
     return time;
 }
+
 
 const server = ganache.server(options)
 server.listen(options.port, options.hostname, (err, result) => {
