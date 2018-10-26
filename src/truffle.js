@@ -6,8 +6,8 @@ module.exports = {
   networks: {
     local: {
       gas        : 6700000,
-      host       : '127.0.0.1',
-      port       : 1406,
+      host       : '0.0.0.0',
+      port       : 8545,
       gasPrice   : 32,
       network_id : '*'
     },

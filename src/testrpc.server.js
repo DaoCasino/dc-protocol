@@ -111,16 +111,16 @@ server.on('request', (req, res) => {
   const path = req.url.split('/')
   if ((path[1]==='contract' || path[1]==='contracts') && path[2]) {
     const contractName = path[2]
-    if (getContractsAddresses()[path[2]]) {
-      let contract = {}
-      try {
-        contract = require('./build/contracts/'+contractName+'.json')
-      } catch(err) {
-        contract = {error:err, msg:'Cant find '+contractName+' contract info'}
-      }
-
-      res.end(JSON.stringify(contract))
+    
+    let contract = {err:`${contractName} not found`}
+    
+    try {
+      contract = require('./build/contracts/'+ contractName.split('..').join('')+'.json')
+    } catch (err){
+      console.warn('cant load contract file', err)
     }
+    
+    res.end(JSON.stringify(contract))
   }
 
 

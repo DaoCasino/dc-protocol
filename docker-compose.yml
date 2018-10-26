@@ -21,3 +21,24 @@ services:
       - 8545:8546
     volumes:
       - ./src/build:/protocol
+
+  dc_protocol2:
+    container_name: 
+      dc_protocol2
+    labels:
+      - "22testrpc with dao casino protocol contracts"
+    build:
+     ./
+    # see ./src/testrpc.server.mjs options
+    environment:
+      - hostname=0.0.0.0
+      - port=8546
+      # - defaultBalanceEther=100000
+      # - blockTime=2
+      # - gasPrice=1
+      # - gasLimit=7992181
+      # - mnemonic='candy, maple cake sugar pudding cream honey rich smooth crumble sweet treat'
+    ports:
+      - 8544:8546
+    volumes:
+      - ./src/build:/protocol
