@@ -10,12 +10,13 @@ const Game     = artifacts.require('../contracts/whitelists/myDAppGame.sol')
 
 module.exports = async (deployer, network, accounts) => {
   const config = {
-    Game     : Game.address    ,
-    ERC20    : ERC20.address    ,
-    Referrer : ref.address      ,
-    GameWL   : GameWL.address   ,
-    PlayerWL : PlayerWL.address ,
-    RSA      : RSA.address
+    myDAppGame : Game.address    ,
+    Game       : Game.address    ,
+    ERC20      : ERC20.address    ,
+    Referrer   : ref.address      ,
+    GameWL     : GameWL.address   ,
+    PlayerWL   : PlayerWL.address ,
+    RSA        : RSA.address
   }
 
   
