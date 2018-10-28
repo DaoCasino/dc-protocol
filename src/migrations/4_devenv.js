@@ -12,12 +12,13 @@ module.exports = async (deployer, network, accounts) => {
   if (network === 'ropsten' || network === 'ropsten-fork' || network === 'rinkeby') return
 
   const config = {
-    Game     : Game.address    ,
-    ERC20    : ERC20.address    ,
-    Referrer : ref.address      ,
-    GameWL   : GameWL.address   ,
-    PlayerWL : PlayerWL.address ,
-    RSA      : RSA.address
+    myDAppGame : Game.address    ,
+    Game       : Game.address    ,
+    ERC20      : ERC20.address    ,
+    Referrer   : ref.address      ,
+    GameWL     : GameWL.address   ,
+    PlayerWL   : PlayerWL.address ,
+    RSA        : RSA.address
   }
   
   const instance = await ERC20.deployed()

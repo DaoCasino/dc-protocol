@@ -5,8 +5,10 @@ const defaultMnemonic = 'glass method front super auto hole know grace select pr
 module.exports = {
   networks: {
     development: {
+      gas        : 6700000,
+      gasPrice   : 32,
       host       : '0.0.0.0',
-      port       : process.env.TESTRPC_PORT || 8545,
+      port       : 8545,
       network_id : '*'
     },
 
