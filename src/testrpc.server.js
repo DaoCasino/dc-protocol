@@ -1,10 +1,12 @@
-const ganache = require("ganache-core")
+const ganache = require("ganache-cli")
+const testrpcAccountsDB = require('./testrpcAccountsDB.json')
 
 let state = {}
 
 // more opts find in https://github.com/trufflesuite/ganache-cli/blob/develop/cli.js#L73
 const options = {
-  hostname: "0.0.0.0",
+  hostname: "127.0.0.1",
+  accounts: testrpcAccountsDB,
   port: 8545,
   verbose: true,
   deterministic: false,

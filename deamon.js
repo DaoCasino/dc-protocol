@@ -50,6 +50,14 @@ program
   .command('migrate')
   .description('Migrate contracts')
   .option('-n --network <blockchainNetwork>', 'Blockchain network for deploy contract')
-  .action(command => migrate(command))
+  .action(async command => {
+    try {
+      await migrate(command)
+    } catch (error) {
+      console.error(error.message)
+      process.exitCode = 1
+      process.kill(process.pid, 'SIGTERM')
+    }
+  })
 
 program.parse(process.argv)
