@@ -36,7 +36,6 @@ module.exports = {
     }
   },
 
-  contracts_directory       : process.env.CONTRACTS_PATH || path.resolve(__dirname, '../', './contracts'),
   migrations_directory      : path.resolve(__dirname, './migrations'),
   
   contracts_directory: (fs.existsSync(process.env.CONTRACTS_PATH))
