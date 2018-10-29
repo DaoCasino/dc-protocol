@@ -5,8 +5,7 @@ services:
     container_name: dc_protocol
     labels:
       - "testrpc with dao casino protocol contracts"
-    # build: ./
-    image: daocasino/protocol
+    build: ./
     # see ./src/testrpc.server.mjs options
     environment:
       - hostname=0.0.0.0
