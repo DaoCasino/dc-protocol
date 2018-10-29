@@ -41,8 +41,5 @@ module.exports = {
 
   contracts_directory: (fs.existsSync(process.env.CONTRACTS_PATH))
     ? process.env.CONTRACTS_PATH
-    : path.join(__dirname, './contracts'),
-  
-  contracts_build_directory: path.join(__dirname, './build/contracts'),
-  migrations_directory: path.join(__dirname, './migrations'),
+    : path.join(__dirname, './contracts')
 }
