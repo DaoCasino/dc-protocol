@@ -1,13 +1,14 @@
+const fs               = require('fs')
 const path             = require('path')
 const HDWalletProvider = require('truffle-hdwallet-provider')
-const defaultMnemonic = 'glass method front super auto hole know grace select prevent custom fancy'
+const defaultMnemonic  = 'glass method front super auto hole know grace select prevent custom fancy'
 
 module.exports = {
   networks: {
     development: {
       gas        : 6700000,
       gasPrice   : 32,
-      host       : '0.0.0.0',
+      host       : '127.0.0.1',
       port       : 8545,
       network_id : '*'
     },
@@ -38,5 +39,10 @@ module.exports = {
     }
   },
 
-  contracts_directory: process.env.CONTRACTS_PATH || path.join(__dirname, './contracts'),
+  contracts_directory: (fs.existsSync(process.env.CONTRACTS_PATH))
+    ? process.env.CONTRACTS_PATH
+    : path.join(__dirname, './contracts'),
+  
+  contracts_build_directory: path.join(__dirname, './build/contracts'),
+  migrations_directory: path.join(__dirname, './migrations'),
 }

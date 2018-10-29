@@ -12,8 +12,8 @@ module.exports = async (deployer, network, accounts) => {
   if (network === 'ropsten' || network === 'ropsten-fork' || network === 'rinkeby') return
 
   const config = {
-    myDAppGame : Game.address    ,
-    Game       : Game.address    ,
+    myDAppGame : Game.address     ,
+    Game       : Game.address     ,
     ERC20      : ERC20.address    ,
     Referrer   : ref.address      ,
     GameWL     : GameWL.address   ,
@@ -22,7 +22,7 @@ module.exports = async (deployer, network, accounts) => {
   }
   
   const instance = await ERC20.deployed()
-  await instance.faucet({from: accounts[0]})
+  await instance.faucet({ from: accounts[0] })
 
   for (let i = 0; i < accounts.length; i++) {
     if (i === 0) continue
