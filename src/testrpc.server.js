@@ -92,7 +92,10 @@ server.listen(options.port, options.hostname, (err, result) => {
 })
 
 server.on("request", (req, res) => {
-  res.writeHead(200, { "Content-Type": "application/json" })
+  res.writeHead(200, { 
+    "Access-Control-Allow-Origin": "*" , 
+    "Content-Type": "application/json" 
+  })
 
   if (req.url === "/status") {
     res.end(
