@@ -1,14 +1,13 @@
+const fs               = require('fs')
 const path             = require('path')
 const HDWalletProvider = require('truffle-hdwallet-provider')
 const standartDAOCasinoMnemonic = 'glass method front super auto hole know grace select prevent custom fancy'
 
 module.exports = {
   networks: {
-    local: {
-      gas        : 6700000,
+    development: {
       host       : '0.0.0.0',
       port       : 8545,
-      gasPrice   : 32,
       network_id : '*'
     },
 
@@ -38,7 +37,10 @@ module.exports = {
     }
   },
 
-  contracts_directory       : process.env.CONTRACTS_PATH || path.resolve(__dirname, './contracts'),
   migrations_directory      : path.resolve(__dirname, './migrations'),
-  contracts_build_directory : path.resolve(__dirname, './build')
+  
+  contracts_directory: (fs.existsSync(process.env.CONTRACTS_PATH))
+      ? process.env.CONTRACTS_PATH
+      : path.join(__dirname, './contracts')
+
 }
