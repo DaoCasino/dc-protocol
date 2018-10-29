@@ -5,11 +5,12 @@ services:
     container_name: dc_protocol
     labels:
       - "testrpc with dao casino protocol contracts"
-    build: ./
+    # build: ./
+    image: daocasino/protocol
     # see ./src/testrpc.server.mjs options
     environment:
       - hostname=0.0.0.0
-      - port=8546
+      # - port=8546
       # - defaultBalanceEther=100000
       # - blockTime=2
       # - gasPrice=1

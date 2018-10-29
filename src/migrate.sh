@@ -1,2 +1,2 @@
-truffle migrate --network local || true
-truffle migrate --network local || true
+truffle migrate || true
+truffle migrate || true
