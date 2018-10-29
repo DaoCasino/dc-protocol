@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
-# clear
+#!/usr/bin/env bash -e
 
+clear
 if [ $1 == 'local' ]; then
   npm run migrate:local || clear
   npm run migrate:local || exit 1
