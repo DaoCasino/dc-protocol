@@ -1,3 +1,4 @@
+const fs               = require('fs')
 const path             = require('path')
 const HDWalletProvider = require('truffle-hdwallet-provider')
 const standartDAOCasinoMnemonic = 'glass method front super auto hole know grace select prevent custom fancy'
