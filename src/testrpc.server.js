@@ -5,7 +5,7 @@ let state = {}
 
 // more opts find in https://github.com/trufflesuite/ganache-cli/blob/develop/cli.js#L73
 const options = {
-  hostname: "127.0.0.1",
+  hostname: "0.0.0.0",
   port: 8545,
   verbose: true,
   deterministic: false,
