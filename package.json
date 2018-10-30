@@ -1,13 +1,13 @@
 {
   "name": "dc-protocol",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Start ganache and deploy our contracts",
   "main": "index.js",
   "bin": {
     "dc-protocol": "bin/deamon"
   },
   "scripts": {
-    "start": "cd src && sh testrpc.sh | sh migrate.sh",
+    "start": "cd src && sh testrpc.sh | sh migrate.sh local",
     "build": "cd src && truffle compile",
     "clean": "rm -rf ./testrpc_db",
 
