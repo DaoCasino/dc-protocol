@@ -4,7 +4,7 @@
   "description": "Start ganache and deploy our contracts",
   "main": "index.js",
   "bin": {
-    "dc-protocol": "bin/deamon"
+    "dc-protocol": "bin/CLI"
   },
   "scripts": {
     "start": "cd src && sh testrpc.sh | sh migrate.sh",
