@@ -23,7 +23,7 @@ function migrate(options) {
 function deamonStart(options) {
   if (options.host) { process.env.hostname = options.host }
   if (options.port) { process.env.port = options.port }
-  
+
   require('./src/testrpc.server')
 }
 
