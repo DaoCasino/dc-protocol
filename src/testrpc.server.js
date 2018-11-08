@@ -1,3 +1,4 @@
+const path = require('path')
 const ganache = require("ganache-cli")
 const testrpcAccountsDB = require('./testrpcAccountsDB.json')
 
@@ -8,7 +9,8 @@ const options = {
   hostname: "0.0.0.0",
   port: 8545,
   verbose: true,
-  deterministic: false,
+  // deterministic: false,
+  // db_path: path.join(__dirname, './testrpc_db'),
   defaultBalanceEther: 100000,
   blockTime: 2,
   gasPrice: 1,
