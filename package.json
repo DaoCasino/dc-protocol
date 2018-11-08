@@ -1,15 +1,20 @@
 {
   "name": "dc-protocol",
-  "version": "0.1.4",
+  "version": "0.1.7",
   "description": "Start ganache and deploy our contracts",
   "main": "index.js",
   "bin": {
     "dc-protocol": "bin/CLI"
   },
   "scripts": {
-    "start": "cd src && sh testrpc.sh | sh migrate.sh",
+    "start": "cd src && sh testrpc.sh | sh migrate.sh local",
     "build": "cd src && truffle compile",
     "clean": "rm -rf ./testrpc_db",
+
+    "migrate:local": "cd ./src && truffle migrate --network development",
+    "migrate:ropsten": "cd ./src && truffle migrate --network ropsten",
+    "migrate:rinkeby": "cd ./src && truffle migrate --network rinkeby",
+
     "docker:start": "docker-compose up -d && docker-compose ps",
     "docker:stop": "docker-compose down && docker-compose ps",
     "docker:logs": "docker logs -f dc_protocol",
@@ -28,7 +33,7 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.19.0",
-    "ganache-core": "^2.2.1",
+    "ganache-cli": "^6.1.8",
     "truffle": "^5.0.0-beta.0",
     "truffle-hdwallet-provider": "^1.0.0-web3one.0"
   },

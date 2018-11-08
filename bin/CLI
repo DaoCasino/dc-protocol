@@ -5,4 +5,4 @@
 // Due to an obscure Mac bug, do not start this title with any symbol.
 process.title = 'dc-protocol'
 
-require('../commands')
+require('../CLI')

@@ -1,4 +1,5 @@
-const ganache = require("ganache-core")
+const ganache = require("ganache-cli")
+const testrpcAccountsDB = require('./testrpcAccountsDB.json')
 
 let state = {}
 
@@ -23,6 +24,8 @@ for (let k in options) {
 
 console.log("Start ganache server with opts:")
 console.table(options)
+
+options.accounts = testrpcAccountsDB
 
 // options.logger = {
 //   log (log) {
@@ -94,8 +97,7 @@ server.listen(options.port, options.hostname, (err, result) => {
 server.on("request", (req, res) => {
   res.writeHead(200, {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers":
-      "Origin, X-Requested-With, Content-Type, Accept",
+    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
     "Content-Type": "application/json"
   })
 

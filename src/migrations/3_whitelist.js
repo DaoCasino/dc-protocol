@@ -4,6 +4,8 @@ const BET = 10 ** 18
 const PlayerWL = artifacts.require('../contracts/whitelists/PlayerWL.sol')
 
 module.exports = async (deployer, network, accounts) => {
+  if (network === 'ropsten' || network === 'ropsten-fork' || network === 'rinkeby') return
+
   const pWL = await PlayerWL.deployed()
   
   if (pWL) {
