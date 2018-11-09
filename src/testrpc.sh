@@ -1,2 +1,2 @@
 #!/bin/bash -e
-node testrpc.server.js &
+node testrpc.server.js
