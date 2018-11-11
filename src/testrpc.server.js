@@ -1,6 +1,6 @@
 const path = require('path')
-const ganache = require("ganache-cli")
-const testrpcAccountsDB = require('./testrpcAccountsDB.json')
+const ganache = require("ganache-core")
+
 
 let state = {}
 
@@ -27,7 +27,6 @@ for (let k in options) {
 console.log("Start ganache server with opts:")
 console.table(options)
 
-options.accounts = testrpcAccountsDB
 
 // options.logger = {
 //   log (log) {
