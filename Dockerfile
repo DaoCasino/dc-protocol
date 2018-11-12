@@ -12,11 +12,10 @@ RUN mkdir -p /protocol
 COPY ./src /deploy_protocol
 WORKDIR /deploy_protocol
 
-RUN yarn init -y && yarn add ganache-core truffle@beta truffle-hdwallet-provider
+RUN yarn init -y && yarn add ganache-core@2.2.1 truffle@5.0.0-beta.0 truffle-hdwallet-provider
  # --production --pure-lockfile --non-interactive
 
-# run ganache-cli and start truffle migrations
-RUN sh testrpc.sh & sh migrate.sh
+RUN sh testrpc.sh & sh migrate.sh local
 
 EXPOSE 8545
 
