@@ -23,15 +23,8 @@ function migrate(options) {
 function deamonStart(options) {
   if (options.host) { process.env.hostname = options.host }
   if (options.port) { process.env.port = options.port }
-
-  const pathToTestrpcDB = path.join(__dirname, './src/testrpc_db');
-  (!fs.existsSync(pathToTestrpcDB)) && fs.mkdirSync(pathToTestrpcDB)
-
-  spawn('node ./testrpc.server.js', {
-    cwd: path.join(__dirname, './src'),
-    shell: true,
-    stdio: 'inherit'
-  })
+  
+  require('./src/testrpc.server')
 }
 
 program

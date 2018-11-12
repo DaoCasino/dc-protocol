@@ -1,5 +1,6 @@
-const ganache = require("ganache-cli")
-const testrpcAccountsDB = require('./testrpcAccountsDB.json')
+const path = require('path')
+const ganache = require("ganache-core")
+
 
 let state = {}
 
@@ -8,7 +9,8 @@ const options = {
   hostname: "0.0.0.0",
   port: 8545,
   verbose: true,
-  deterministic: false,
+  // deterministic: false,
+  // db_path: path.join(__dirname, './testrpc_db'),
   defaultBalanceEther: 100000,
   blockTime: 2,
   gasPrice: 1,
@@ -25,7 +27,6 @@ for (let k in options) {
 console.log("Start ganache server with opts:")
 console.table(options)
 
-options.accounts = testrpcAccountsDB
 
 // options.logger = {
 //   log (log) {
