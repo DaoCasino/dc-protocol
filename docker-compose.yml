@@ -1,11 +1,12 @@
 version: "2.1"
 
 services:
-  dc_protocol:
-    container_name: dc_protocol
+  dc-protocol:
+    container_name: dc-protocol
+    image:
+      altvnv/dc-protocol:latest
     labels:
       - "testrpc with dao casino protocol contracts"
-    build: ./
     # see ./src/testrpc.server.mjs options
     environment:
       - hostname=0.0.0.0
