@@ -1,6 +1,5 @@
-var Migrations = artifacts.require('./Migrations.sol')
+var Migrations = artifacts.require('./devtools/Migrations.sol')
 
-module.exports = function (deployer, network) {
-  if (network === 'ropsten' || network === 'ropsten-fork' || network === 'rinkeby') return
+module.exports = async function (deployer) {
   deployer.deploy(Migrations)
 }

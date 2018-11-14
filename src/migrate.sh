@@ -5,7 +5,6 @@ rm -rf ./build
 clear
 case "$1" in
 "local")
-    truffle migrate --network development || clear
     truffle migrate --network development || exit 1
     ;;
 "ropsten")

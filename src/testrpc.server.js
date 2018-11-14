@@ -16,7 +16,7 @@ const options = {
   gasPrice: 1,
   gasLimit: 7992181,
   mnemonic:
-    "candy, maple cake sugar pudding cream honey rich smooth crumble sweet treat"
+    "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
 }
 
 // Set opts from env if exist
