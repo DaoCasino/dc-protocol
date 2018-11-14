@@ -6,7 +6,6 @@ const Platform  = artifacts.require('../contracts/core/Platform.sol')
 const Signidice = artifacts.require('../contracts/Signidice/Signidice.sol')
 
 module.exports = async (deployer, network, accounts) => {
-
   const config = {
     myDAppGame : Game.address     ,
     Game       : Game.address     ,
@@ -14,7 +13,6 @@ module.exports = async (deployer, network, accounts) => {
     Platform   : Platform.address ,
     Signidice  : Signidice.address
   }
-
   
   if (network !== 'ropsten' || network !== 'ropsten-fork') {
     const instance = await ERC20.deployed()
@@ -48,6 +46,5 @@ module.exports = async (deployer, network, accounts) => {
 
 
   return fs.writeFileSync(filepath, JSON.stringify(config))
-
 }
 
