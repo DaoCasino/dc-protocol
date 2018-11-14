@@ -9,10 +9,10 @@
   "scripts": {
     "start": "cd src && sh testrpc.sh | sh migrate.sh local",
     "build": "cd src && truffle compile",
-    "clean": "rm -rf ./testrpc_db",
     "migrate:local": "cd ./src && truffle migrate --network development",
     "migrate:ropsten": "cd ./src && truffle migrate --network ropsten",
     "migrate:rinkeby": "cd ./src && truffle migrate --network rinkeby",
+    "reset": "cd src && sh reset.sh",
     "docker:start": "docker-compose up -d && docker-compose ps",
     "docker:stop": "docker-compose down && docker-compose ps",
     "docker:logs": "docker logs -f dc_protocol",
