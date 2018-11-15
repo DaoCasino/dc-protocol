@@ -11,6 +11,7 @@ RUN mkdir -p /protocol
 # copy our protcol scripts
 COPY ./src /deploy_protocol
 WORKDIR /deploy_protocol
+RUN mkdir -p testrpc_db
 
 RUN yarn init -y && yarn add ganache-core@2.2.1 truffle@5.0.0-beta.0 truffle-hdwallet-provider
  # --production --pure-lockfile --non-interactive
