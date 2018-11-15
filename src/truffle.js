@@ -37,13 +37,18 @@ module.exports = {
     }
   },
 
-  solc: {
-    optimizer: {
-      enabled: true,
-      runs: 200
+  compilers: {
+    solc: {      // Use "0.5.1" you've installed locally with docker (default: false)
+      settings: {          // See the solidity docs for advice about optimization and evmVersion
+       optimizer: {
+         enabled: true,
+         runs: 200
+       },
+       evmVersion: "byzantium"
+      }
     }
   },
-
+  
   migrations_directory: path.resolve(__dirname, "./migrations"),
   contracts_directory: fs.existsSync(process.env.CONTRACTS_PATH)
     ? process.env.CONTRACTS_PATH

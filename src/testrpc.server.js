@@ -1,6 +1,6 @@
 const path = require('path')
-const ganache = require("ganache-cli")
-const testrpcAccountsDB = require('./testrpcAccountsDB.json')
+const ganache = require("ganache-core")
+
 
 let state = {}
 
@@ -10,13 +10,13 @@ const options = {
   port: 8545,
   verbose: true,
   // deterministic: false,
-  // db_path: path.join(__dirname, './testrpc_db'),
+  // db_path: path.join(__dirname, './testrpc_db/'),
   defaultBalanceEther: 100000,
   blockTime: 2,
   gasPrice: 1,
   gasLimit: 7992181,
   mnemonic:
-    "candy, maple cake sugar pudding cream honey rich smooth crumble sweet treat"
+    "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
 }
 
 // Set opts from env if exist
@@ -27,24 +27,25 @@ for (let k in options) {
 console.log("Start ganache server with opts:")
 console.table(options)
 
-options.accounts = testrpcAccountsDB
 
-// options.logger = {
-//   log (log) {
-//     let data = {}
-//     try {
-//       data = JSON.parse(log.split('   >').join(''))
-//     } catch (err) {}
+options.logger = {
+  log (log) {
+    let data = {}
+    try {
+      data = JSON.parse(log.split('   >').join(''))
+    } catch (err) {}
 
-//     if (data.method) {
-//       this.event(data.method, data)
-//     }
-//   },
+    if (data.method) {
+      this.event(data.method, data)
+    } else {
+      console.log(data)
+    }
+  },
 
-//   event (action, data) {
-//     console.log('EVENT', action, data)
-//   }
-// }
+  event (action, data) {
+    console.log(action, data)
+  }
+}
 
 const getContractsAddresses = function() {
   let addresses = {}
