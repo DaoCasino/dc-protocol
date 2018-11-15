@@ -1,5 +1,4 @@
 const fs = require("fs")
-
 const ERC20 = artifacts.require("../contracts/core/ERC20.sol")
 const Game = artifacts.require("../contracts/game/myDappGame.sol")
 const Platform = artifacts.require("../contracts/core/Platform.sol")
@@ -13,8 +12,8 @@ module.exports = async (deployer, network, accounts) => {
     Platform: Platform.address,
     Signidice: Signidice.address
   }
-
-  if (network !== "ropsten" || network !== "ropsten-fork") {
+  
+  if (network !== 'ropsten' || network !== 'ropsten-fork') {
     const instance = await ERC20.deployed()
     await instance.faucet({ from: accounts[0] })
 
