@@ -3,7 +3,7 @@ pragma experimental ABIEncoderV2;
 
 import '../lib/SafeMath.sol';
 import './GameObject.sol';
-import { IGameEngine, ISignidice } from '../interfaces/interfaces.sol';
+import { IGameEngine, ISignidice } from '../interfaces/Interfaces.sol';
 
 /**
 * @title Dice game
