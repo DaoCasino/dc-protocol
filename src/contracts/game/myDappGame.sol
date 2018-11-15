@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 pragma experimental ABIEncoderV2;
 
-import {IGameEngine, IToken, IPlatform, ISignidice} from '../interfaces/interfaces.sol';
+import {IGameEngine, IToken, IPlatform, ISignidice} from '../interfaces/Interfaces.sol';
 import '../gameEngine/GameObject.sol';
 import '../lib/SafeMath.sol';
 import '../lib/Utils.sol';
