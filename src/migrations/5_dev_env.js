@@ -1,7 +1,7 @@
 const fs = require("fs")
-const ERC20 = artifacts.require("../contracts/core/ERC20.sol")
+const ERC20 = artifacts.require("../contracts/token/ERC20.sol")
 const Game = artifacts.require("../contracts/game/myDappGame.sol")
-const Platform = artifacts.require("../contracts/core/Platform.sol")
+const Platform = artifacts.require("../contracts/platform/Platform.sol")
 const Signidice = artifacts.require("../contracts/Signidice/Signidice.sol")
 
 module.exports = async (deployer, network, accounts) => {
