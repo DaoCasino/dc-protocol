@@ -1,5 +1,5 @@
 const BET = 10 ** 18
-const Platform = artifacts.require('../contracts/core/Platform.sol')
+const Platform = artifacts.require('../contracts/token/Platform.sol')
 const Game     = artifacts.require('../contracts/game/myDappGame.sol')
 
 module.exports = async (deployer, network, accounts) => {
