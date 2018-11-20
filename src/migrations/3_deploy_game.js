@@ -1,5 +1,5 @@
 const ERC20     = artifacts.require('../contracts/token/ERC20.sol')
-const Platform  = artifacts.require('../contracts/core/Platform.sol')
+const Platform  = artifacts.require('../contracts/platform/Platform.sol')
 const Utils     = artifacts.require('../contracts/lib/Utils.sol')
 const Signidice = artifacts.require('../contracts/Signidice/Signidice.sol')
 
