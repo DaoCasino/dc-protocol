@@ -101,7 +101,7 @@ contract GameChannel is GameObject {
     )
         public
     {
-        address _signer = Utils.recoverSigner(keccak256(abi.encodePacked(_id, _player, _bankroller, _playerBalance, _bankrollerBalance, _openingBlock, _gameData, _N, _E)), _signature);
+        address _signer = Utils.recoverSigner(keccak256(abi.encodePacked(_id, _player, _bankroller, _playerBalance, _bankrollerBalance, _openingBlock, _N, _E)), _signature);
         require(channels[_id].state == State.unused, 'used id');
         require(_openingBlock.add(20) >= block.number, 'outdate signature');
         require(platform.getMaxAmount(_player) >= _playerBalance, 'invalid amount');
