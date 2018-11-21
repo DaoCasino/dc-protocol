@@ -6,11 +6,11 @@ let state = {}
 
 // more opts find in https://github.com/trufflesuite/ganache-cli/blob/develop/cli.js#L73
 const options = {
-  hostname: "0.0.0.0",
+  hostname: "127.0.0.1",
   port: 8545,
   verbose: true,
   // deterministic: false,
-  db_path: path.join(__dirname, './testrpc_db/'),
+  //db_path: path.join(__dirname, './testrpc_db/'),
   defaultBalanceEther: 100000,
   blockTime: 2,
   gasPrice: 1,
@@ -21,7 +21,7 @@ const options = {
 
 // Set opts from env if exist
 for (let k in options) {
-  options[k] = process.env[k] || options[k]
+  //options[k] = process.env[k] || options[k]
 }
 
 console.log("Start ganache server with opts:")
