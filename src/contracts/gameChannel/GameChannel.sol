@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 pragma experimental ABIEncoderV2;
 
-import {IGameEngine, IToken, IPlatform, ISignidice} from '../interfaces/interfaces.sol';
+import {IGameEngine, IToken, IPlatform, ISignidice} from '../interfaces/Interfaces.sol';
 import '../game/GameObject.sol';
 import '../library/SafeMath.sol';
 import '../library/Utils.sol';
@@ -61,8 +61,8 @@ contract GameChannel is GameObject {
     }
 
     struct Dispute {
-        uint[]   disputeBets;
-        gameData disputeGameData;
+        uint256[] disputeBets;
+        gameData  disputeGameData;
     }
 
     enum State {unused, open, close, dispute}
@@ -228,7 +228,7 @@ contract GameChannel is GameObject {
         Channel storage _channel = channels[_id];
         Dispute storage _dispute = disputes[_id];
         // TODO time check
-        uint _penalty = engine.getPenatlty(_dispute.disputeGameData, _dispute.disputeBets);
+        uint256 _penalty = engine.getPenatlty(_dispute.disputeGameData, _dispute.disputeBets);
         _channel.bankrollerBalance = _channel.bankrollerBalance.sub(_penalty);
         _channel.playerBalance     = _channel.playerBalance.add(_penalty);
         closeChannel(_id);
@@ -254,11 +254,11 @@ contract GameChannel is GameObject {
     @param _signature Player's game data signature
     */
     function openDispute(
-        bytes32  _id,
-        uint     _session,
-        uint[]   _disputeBets,
-        gameData _gameData,
-        bytes    _signature
+        bytes32   _id,
+        uint256   _session,
+        uint256[] _disputeBets,
+        gameData  _gameData,
+        bytes     _signature
     )
         public active(channels[_id])
     {
@@ -339,10 +339,10 @@ contract GameChannel is GameObject {
     */
     function closeChannel(bytes32 _id) internal {
         Channel storage _channel = channels[_id];
-        uint _forReward          = _channel.totalBet.mul(20).div(1000);
-        uint _bankrollerReward   = _forReward.mul(bankrollReward).div(100);
-        uint _forPlayer          = _channel.playerBalance;
-        uint _forBankroller      = uint(0);
+        uint256 _forReward          = _channel.totalBet.mul(20).div(1000);
+        uint256 _bankrollerReward   = _forReward.mul(bankrollReward).div(100);
+        uint256 _forPlayer          = _channel.playerBalance;
+        uint256 _forBankroller      = uint(0);
         
         if(_forReward > _channel.bankrollerBalance) {
             _forPlayer = _forPlayer.sub(_forReward);

@@ -19,7 +19,7 @@ contract MyDappGame is GameChannel {
         bankrollReward = uint256(25);
         platformReward = uint256(25);
         refererReward  = uint256(25);
-        minBet         = uint256(100);
+        minBet         = uint256(1);
         developer      = address(0x42);
     }
 

@@ -11,6 +11,8 @@ module.exports = async (deployer) => {
   await deployer.deploy(Game, GameEngine.address, ERC20.address, Platform.address, Signidice.address)
   const GameContract = await Game.deployed()
   const name = await GameContract.getName.call()
-  console.log(`>>> Deploy ${name} - complete <<<`)
+  console.log(`
+        >>> Deploy ${name} - complete <<<
+        address: ${Game.address}
+  `)
 }
-
