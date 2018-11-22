@@ -1,6 +1,6 @@
 {
   "name": "dc-protocol",
-  "version": "0.1.10",
+  "version": "0.1.18",
   "description": "Start ganache and deploy our contracts",
   "main": "index.js",
   "bin": {
@@ -35,5 +35,5 @@
     "truffle": "^5.0.0-beta.0",
     "truffle-hdwallet-provider": "^1.0.0-web3one.0"
   },
-  "gitHead": "865d20c921eb00208778bbdcbb47fe95c2b4ed38"
+  "gitHead": "3e5dcaecc303cdce6b606ab1fc570c530592eef4"
 }
