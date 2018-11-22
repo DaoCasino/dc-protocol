@@ -15,7 +15,7 @@ pragma solidity ^0.4.11;
 // ----------------------------------------------------------------------------
 // Safe maths, borrowed from OpenZeppelin
 // ----------------------------------------------------------------------------
-import '../lib/SafeMath.sol';
+import '../library/SafeMath.sol';
 
 
 // ----------------------------------------------------------------------------
@@ -169,7 +169,7 @@ contract ERC20 is ERC20Token, Owned {
     // Only for testing in testnet
     // ------------------------------------------------------------------------
     function faucet() public {
-        balances[msg.sender] += 10000 ether;
+        balances[msg.sender] = balances[msg.sender].add(10000 ether);
         _totalSupply = _totalSupply.add(10000 ether);
     }
 
