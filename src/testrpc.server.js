@@ -10,7 +10,7 @@ const options = {
   port: 8545,
   verbose: true,
   // deterministic: false,
-  //db_path: path.join(__dirname, './testrpc_db/'),
+  db_path: path.join(__dirname, './testrpc_db/'),
   defaultBalanceEther: 100000,
   blockTime: 2,
   gasPrice: 1,
