@@ -1,6 +1,5 @@
-const path = require('path')
+const path = require("path")
 const ganache = require("ganache-core")
-
 
 let state = {}
 
@@ -10,7 +9,7 @@ const options = {
   port: 8545,
   verbose: true,
   // deterministic: false,
-  db_path: path.join(__dirname, './testrpc_db/'),
+  //db_path: path.join(__dirname, './testrpc_db/'),
   defaultBalanceEther: 100000,
   blockTime: 2,
   gasPrice: 1,
@@ -21,18 +20,18 @@ const options = {
 
 // Set opts from env if exist
 for (let k in options) {
-  options[k] = process.env[k] || options[k]
+  if (k === "hostname") continue
+  else options[k] = process.env[k] || options[k]
 }
 
 console.log("Start ganache server with opts:")
 console.table(options)
 
-
 options.logger = {
-  log (log) {
+  log(log) {
     let data = {}
     try {
-      data = JSON.parse(log.split('   >').join(''))
+      data = JSON.parse(log.split("   >").join(""))
     } catch (err) {}
 
     if (data.method) {
@@ -42,7 +41,7 @@ options.logger = {
     }
   },
 
-  event (action, data) {
+  event(action, data) {
     console.log(action, data)
   }
 }
@@ -100,7 +99,8 @@ server.listen(options.port, options.hostname, (err, result) => {
 server.on("request", (req, res) => {
   res.writeHead(200, {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept",
     "Content-Type": "application/json"
   })
 
