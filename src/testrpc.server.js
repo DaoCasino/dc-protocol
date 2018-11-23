@@ -1,3 +1,4 @@
+const fs = require('fs')
 const path = require("path")
 const ganache = require("ganache-core")
 
@@ -19,6 +20,9 @@ const options = {
 
 if (!process.env['no_db']) {
   options.db_path = path.join(__dirname, './testrpc_db/')
+  if (!fs.existsSync(options.db_path)) {
+    fs.mkdirSync(options.db_path)
+  }
 }
 
 // Set opts from env if exist

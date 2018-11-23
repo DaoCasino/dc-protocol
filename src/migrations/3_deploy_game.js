@@ -2,14 +2,14 @@ const ERC20 = artifacts.require("../contracts/token/ERC20.sol")
 const Platform = artifacts.require("../contracts/platform/Platform.sol")
 const Utils = artifacts.require("../contracts/library/Utils.sol")
 const Signidice = artifacts.require("../contracts/Signidice/Signidice.sol")
-const GameEngine = artifacts.require("../contracts/gameEngine/GameEngine.sol")
-const Game = artifacts.require("../contracts/game/MyDappGame.sol")
+const GameEngine = artifacts.require("../contracts/game/GameEngine.sol")
+const MyDappGame = artifacts.require("../contracts/game/MyDappGame.sol")
 
 module.exports = async deployer => {
-  await deployer.link(Utils, Game)
+  await deployer.link(Utils, MyDappGame)
   await deployer.deploy(GameEngine, Signidice.address)
   await deployer.deploy(
-    Game,
+    MyDappGame,
     GameEngine.address,
     ERC20.address,
     Platform.address,
