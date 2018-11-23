@@ -105,12 +105,12 @@ contract GameChannel is GameObject {
         require(channels[_id].state == State.unused, 'used id');
         require(_openingBlock.add(200) >= block.number, 'outdate signature');
         require(platform.getMaxAmount(_player) >= _playerBalance, 'invalid amount');
-        require(platform.getStatus(this), 'invalid status');
+        require(platform.getStatus(address(this)), 'invalid status');
         require((_signer == _player || _signer == _bankroller) && (msg.sender != _signer), 'invalid signer');
         require(msg.sender == _player || msg.sender == _bankroller, 'invalid sender');
         
-        require(token.transferFrom(_player, this, _playerBalance), 'fail transfer from player');
-        require(token.transferFrom(_bankroller, this, _bankrollerBalance), 'fail transfe from bankroller');
+        require(token.transferFrom(_player, address(this), _playerBalance), 'fail transfer from player');
+        require(token.transferFrom(_bankroller, address(this), _bankrollerBalance), 'fail transfe from bankroller');
 
         Channel memory _channel = Channel({
             state             : State.open,
