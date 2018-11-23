@@ -31,6 +31,10 @@ for (let k in options) {
   else options[k] = process.env[k] || options[k]
 }
 
+if (process.env.NODE_ENV==='test') {
+  options.blockTime = 0
+}
+
 console.log("Start ganache server with opts:")
 console.table(process.argv)
 console.table(options)
