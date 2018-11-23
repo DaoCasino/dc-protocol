@@ -31,8 +31,8 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.19.0",
-    "ganache-core": "2.2.0",
-    "truffle": "5.0.0-beta.0",
+    "ganache-core": "2.2.1",
+    "truffle": "5.0.0-beta.2",
     "truffle-hdwallet-provider": "1.0.0-web3one.0"
   },
   "gitHead": "3e5dcaecc303cdce6b606ab1fc570c530592eef4"
