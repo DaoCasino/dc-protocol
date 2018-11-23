@@ -32,8 +32,10 @@ for (let k in options) {
 }
 
 console.log("Start ganache server with opts:")
+console.table(process.argv)
 console.table(options)
 
+if ( !(process.argv[2] && process.argv[2]==='nologs') ) {
 options.logger = {
   log(log) {
     let data = {}
@@ -51,6 +53,7 @@ options.logger = {
   event(action, data) {
     console.log(action, data)
   }
+}
 }
 
 const getContractsAddresses = function() {
