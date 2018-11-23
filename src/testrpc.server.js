@@ -9,7 +9,6 @@ const options = {
   port: 8545,
   verbose: true,
   // deterministic: false,
-  //db_path: path.join(__dirname, './testrpc_db/'),
   defaultBalanceEther: 100000,
   blockTime: 2,
   gasPrice: 1,
@@ -18,9 +17,13 @@ const options = {
     "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
 }
 
+if (!process.env['no_db']) {
+  options.db_path = path.join(__dirname, './testrpc_db/')
+}
+
 // Set opts from env if exist
 for (let k in options) {
-  if (k === "hostname") continue
+  if (k === "hostname" || k === "no_db") continue
   else options[k] = process.env[k] || options[k]
 }
 
