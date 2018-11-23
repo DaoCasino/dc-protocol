@@ -31,7 +31,7 @@ console.log("Start ganache server with opts:")
 console.table(process.argv)
 console.table(options)
 
-if (!process.argv[2] || process.argv[2]!=='nologs') {
+if ( !(process.argv[2] && process.argv[2]==='nologs') ) {
 options.logger = {
   log(log) {
     let data = {}
