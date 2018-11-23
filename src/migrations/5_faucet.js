@@ -5,10 +5,6 @@ module.exports = async (deployer, network, accounts) => {
   
   const contract = await ERC20.deployed()
   for (var i = 0; i < accounts.length; i++) {
-    if (process.env.NODE_ENV==='test' && i > 1) {
-      return
-    }
-
     await contract.faucet({from: accounts[i]})
     var bet = await contract.balanceOf.call(accounts[i])
     console.log(`
