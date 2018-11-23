@@ -12,6 +12,7 @@ const options = {
   // deterministic: false,
   defaultBalanceEther: 100000,
   blockTime: 2,
+  total_accounts: 10,
   gasPrice: 1,
   gasLimit: 7992181,
   mnemonic:
@@ -31,10 +32,6 @@ for (let k in options) {
   else options[k] = process.env[k] || options[k]
 }
 
-if (process.env.NODE_ENV==='test') {
-  options.blockTime = 0
-}
-
 console.log("Start ganache server with opts:")
 console.table(process.argv)
 console.table(options)
@@ -42,10 +39,18 @@ console.table(options)
 if ( !(process.argv[2] && process.argv[2]==='nologs') ) {
 options.logger = {
   log(log) {
+    if (
+      log.indexOf('"method": "evm_mine"')>-1 || 
+      log.indexOf('"result": "0x0"')>-1
+    ) { 
+      return 
+    }
+
     let data = {}
     try {
       data = JSON.parse(log.split("   >").join(""))
     } catch (err) {}
+
 
     if (data.method) {
       this.event(data.method, data)
