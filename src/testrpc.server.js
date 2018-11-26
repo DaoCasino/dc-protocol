@@ -11,7 +11,7 @@ const options = {
   verbose: true,
   // deterministic: false,
   defaultBalanceEther: 100000,
-  blockTime: 2,
+  blockTime: 0,
   total_accounts: 10,
   gasPrice: 1,
   gasLimit: 7992181,
