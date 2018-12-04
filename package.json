@@ -1,6 +1,6 @@
 {
   "name": "dc-protocol",
-  "version": "0.1.42",
+  "version": "0.1.43",
   "description": "Start ganache and deploy our contracts",
   "main": "index.js",
   "bin": {
