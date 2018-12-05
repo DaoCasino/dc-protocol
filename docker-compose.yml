@@ -1,21 +1,17 @@
 version: "2.1"
 
 services:
-  dc-protocol:
+  dc-protocol-stage:
     container_name: dc-protocol
-    # image:
-      # altvnv/dc-protocol:latest
     build: .
-    labels:
-      - "testrpc with dao casino protocol contracts"
-    # see ./src/testrpc.server.mjs options
+    restart: on-failure
     environment:
-      - hostname=0.0.0.0
+      - hostname=127.0.0.1
+      # - blockTime=0
       # - port=8546
       # - defaultBalanceEther=100000
-      # - blockTime=2
       # - gasPrice=1
       # - gasLimit=7992181
       # - mnemonic='candy, maple cake sugar pudding cream honey rich smooth crumble sweet treat'
     ports:
-      - 8545:8545
+      - 127.0.0.1:8545:8545
