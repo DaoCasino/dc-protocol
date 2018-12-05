@@ -1,12 +1,10 @@
-const fs = require('fs')
-const path = require('path')
 const program = require('commander')
 const { spawn } = require('child_process')
 
 function migrate(options) {
   return new Promise((resolve,  reject) => {
-    const contractMigrate = spawn(`sh ./migrate.sh ${options.network || 'local'}`, {
-      cwd: path.join(__dirname, './src'),
+    const contractMigrate = spawn(`npm run migrate:${options.network || 'local'}`, {
+      cwd: __dirname,
       shell: true,
       stdio: 'inherit'
     })

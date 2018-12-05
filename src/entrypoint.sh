@@ -3,4 +3,4 @@
 mkdir -p /protocol
 cp -r ./build/* /protocol/
 
-sh `dirname "$0"`/testrpc.sh 10
+sh `dirname "$0"`/testrpc.sh

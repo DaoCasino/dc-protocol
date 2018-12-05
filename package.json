@@ -1,6 +1,6 @@
 {
   "name": "dc-protocol",
-  "version": "0.1.18",
+  "version": "0.1.45",
   "description": "Start ganache and deploy our contracts",
   "main": "index.js",
   "bin": {
@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "cd src && sh testrpc.sh | sh migrate.sh local",
+    "test": "cd src && total_accounts=2 blockTime=0 sh testrpc.sh | sh migrate.sh local",
     "build": "cd src && truffle compile",
     "migrate:local": "cd ./src && truffle migrate --network development",
     "migrate:ropsten": "cd ./src && truffle migrate --network ropsten",
@@ -19,7 +20,8 @@
     "docker:login": "docker login -u alexstep",
     "docker:build": "sh docker_build.sh",
     "docker:publish": "sh docker_publish.sh v_0.1.1",
-    "docker:test": "docker build -t dc_protocol_test ."
+    "docker:test": "docker build -t dc_protocol_test .",
+    "start:test": "npm run reset && npm run start"
   },
   "keywords": [
     "dao",
@@ -31,9 +33,9 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.19.0",
-    "ganache-core": "*",
-    "truffle": "^5.0.0-beta.0",
-    "truffle-hdwallet-provider": "^1.0.0-web3one.0"
+    "ganache-core": "2.2.1",
+    "truffle": "5.0.0-beta.2",
+    "truffle-hdwallet-provider": "1.0.0-web3one.0"
   },
-  "gitHead": "3e5dcaecc303cdce6b606ab1fc570c530592eef4"
+  "gitHead": "c83ce2ab1c77daa4fabf666260b0698d37dbf312"
 }

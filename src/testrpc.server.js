@@ -1,6 +1,6 @@
-const path = require('path')
+const fs = require('fs')
+const path = require("path")
 const ganache = require("ganache-core")
-
 
 let state = {}
 
@@ -10,30 +10,47 @@ const options = {
   port: 8545,
   verbose: true,
   // deterministic: false,
-  //db_path: path.join(__dirname, './testrpc_db/'),
   defaultBalanceEther: 100000,
-  blockTime: 2,
+  blockTime: 0,
+  total_accounts: 10,
   gasPrice: 1,
   gasLimit: 7992181,
   mnemonic:
     "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
 }
 
+if (!process.env['no_db']) {
+  options.db_path = path.join(__dirname, './testrpc_db/')
+  if (!fs.existsSync(options.db_path)) {
+    fs.mkdirSync(options.db_path)
+  }
+}
+
 // Set opts from env if exist
 for (let k in options) {
-  options[k] = process.env[k] || options[k]
+  if (k === "hostname" || k === "no_db") continue
+  else options[k] = process.env[k] || options[k]
 }
 
 console.log("Start ganache server with opts:")
+console.table(process.argv)
 console.table(options)
 
-
+if ( !(process.argv[2] && process.argv[2]==='nologs') ) {
 options.logger = {
-  log (log) {
+  log(log) {
+    if (
+      log.indexOf('"method": "evm_mine"')>-1 || 
+      log.indexOf('"result": "0x0"')>-1
+    ) { 
+      return 
+    }
+
     let data = {}
     try {
-      data = JSON.parse(log.split('   >').join(''))
+      data = JSON.parse(log.split("   >").join(""))
     } catch (err) {}
+
 
     if (data.method) {
       this.event(data.method, data)
@@ -42,9 +59,10 @@ options.logger = {
     }
   },
 
-  event (action, data) {
+  event(action, data) {
     console.log(action, data)
   }
+}
 }
 
 const getContractsAddresses = function() {
@@ -100,7 +118,8 @@ server.listen(options.port, options.hostname, (err, result) => {
 server.on("request", (req, res) => {
   res.writeHead(200, {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept",
     "Content-Type": "application/json"
   })
 
