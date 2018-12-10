@@ -21,7 +21,7 @@
     "docker:build": "sh docker_build.sh",
     "docker:publish": "sh docker_publish.sh v_0.1.1",
     "docker:test": "docker build -t dc_protocol_test .",
-    "start:test": "npm run start"
+    "start:test": "npm run reset && npm run start"
   },
   "keywords": [
     "dao",
