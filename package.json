@@ -1,10 +1,10 @@
 {
-  "name": "dc-protocol",
-  "version": "0.1.45",
+  "name": "@daocasino/dc-protocol",
+  "version": "0.2.0",
   "description": "Start ganache and deploy our contracts",
   "main": "index.js",
   "bin": {
-    "dc-protocol": "bin/CLI"
+    "@daocasino/dc-protocol": "bin/CLI"
   },
   "scripts": {
     "start": "cd src && sh testrpc.sh | sh migrate.sh local",
