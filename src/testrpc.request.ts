@@ -1,12 +1,13 @@
 import { IncomingMessage, ServerResponse } from 'http'
 import { Socket } from 'net'
+import { TestrpcRequest as ITestrpcRequest } from './interfaces/testrpc.request'
 import moment from 'moment'
 
-export class TestrpcRequest {
+export class TestrpcRequest implements ITestrpcRequest {
   private socketStorage: Map<number, Socket> = new Map<number, Socket>()
   private state: any
 
-  setState(value: any) {
+  setState(value: any): TestrpcRequest {
     this.state = value
 
     return this
@@ -34,7 +35,7 @@ export class TestrpcRequest {
   }
 
   public registerSocket(socket: Socket) {
-    console.log("REGISTER NEW SOCKET", socket.remotePort)
+    console.log('REGISTER NEW SOCKET', socket.remotePort)
     this.socketStorage.set(socket.remotePort, socket)
     socket.on('close', () => {
       this.socketStorage.delete(socket.remotePort)
@@ -43,7 +44,7 @@ export class TestrpcRequest {
 
   public unregisterSockets() {
     this.socketStorage.forEach((socket: Socket) => {
-      console.log("UNREGISTER SOCKET", socket.remotePort)
+      console.log('UNREGISTER SOCKET', socket.remotePort)
       socket.destroy()
     })
   }

@@ -1,10 +1,12 @@
-import * as fs from 'fs'
 import * as path from 'path'
 import * as ganache from 'ganache-core'
 
 import { default as argvParser } from 'args-parser'
-import { sync as rmDirSync } from 'rmdir-recursive'
+import { fs } from 'fs-extra'
 import { TestrpcRequest } from './testrpc.request'
+
+import { Testrpc as ITestrpc } from './interfaces/testrpc'
+import { NetworkConfig } from './interfaces/network.config'
 
 import { spawn } from 'child_process'
 import { Server } from 'http'
@@ -20,7 +22,7 @@ const DEFAULT_ETH_BALANCE = 10000
 
 const BLOCKCHAIN_DB_PATH = 'testrpc_db'
 
-class Testrpc {
+class Testrpc implements ITestrpc {
   protected noDb: boolean
   protected resetDb: boolean
   protected network: string
@@ -46,7 +48,7 @@ class Testrpc {
   }
 
   private shutdown() {
-    console.log("[NETWORK] stopped")
+    console.log('[NETWORK] stopped')
     this.networkInstance.close()
     process.exit()
   }
@@ -96,7 +98,7 @@ class Testrpc {
 
       if (fs.existsSync(dbPath)) {
         if (this.resetDb) {
-          rmDirSync(dbPath)
+          fs.rmRecursiveSync(dbPath)
         } else {
           resolve()
         }
@@ -131,7 +133,7 @@ class Testrpc {
 
       this.networkInstance.listen(config.port, config.hostname, (error, state) => {
         if (error) {
-          console.error("Server network listener error: ", error)
+          console.error('Server network listener error: ', error)
           this.networkInstance.close()
           reject()
         }
@@ -144,39 +146,29 @@ class Testrpc {
   }
 
   private runMigrations(): Promise<void> {
-    return new Promise<void>(((resolve) => {
+    return new Promise<void>((resolve, reject) => {
       console.log('Start truffle migrations into %s network', this.network)
 
       const migrateProcess = spawn(
         'truffle',
         ['migrate', '--network', this.network],
-        { detached: true }
+        { detached: true, shell: true }
       )
       migrateProcess.stdout.on('data', (data: string) => {
         console.log(String(data))
       })
 
-      migrateProcess.on('exit', (code) => {
-        console.log("Truffle completed", code)
+      migrateProcess.on('exit', (exitCode) => {
+        console.log(exitCode ? 'Truffle complete with errors' : 'Truffle completed')
+
+        if (exitCode) {
+          reject()
+        }
       })
 
       resolve()
-    }))
+    })
   }
-}
-
-interface NetworkConfig {
-  agent: boolean
-  hostname: string
-  port: number
-  verbose: boolean
-  deterministic?: boolean,
-  defaultBalanceEther: number,
-  blockTime: number,
-  total_accounts: number,
-  gasPrice: number,
-  gasLimit: number,
-  mnemonic: string
 }
 
 (new Testrpc())
