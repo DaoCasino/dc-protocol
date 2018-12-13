@@ -1,8 +1,9 @@
 import * as path from 'path'
 import * as ganache from 'ganache-core'
+import * as fs from 'fs'
 
 import { default as argvParser } from 'args-parser'
-import { fs } from 'fs-extra'
+import { fsExtra } from 'fs-extra'
 import { TestrpcRequest } from './testrpc.request'
 
 import { Testrpc as ITestrpc } from './interfaces/testrpc'
@@ -98,7 +99,7 @@ class Testrpc implements ITestrpc {
 
       if (fs.existsSync(dbPath)) {
         if (this.resetDb) {
-          fs.rmRecursiveSync(dbPath)
+          fsExtra.rmRecursiveSync(dbPath)
         } else {
           resolve()
         }

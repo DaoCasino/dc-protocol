@@ -1,7 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'http'
 import { Socket } from 'net'
 import { TestrpcRequest as ITestrpcRequest } from './interfaces/testrpc.request'
-import moment from 'moment'
 
 export class TestrpcRequest implements ITestrpcRequest {
   private socketStorage: Map<number, Socket> = new Map<number, Socket>()
@@ -69,7 +68,7 @@ export class TestrpcRequest implements ITestrpcRequest {
   private getStatus() {
     return {
       status: 'ok',
-      uptime: moment().subtract(process.uptime(), 'seconds').fromNow(true),
+      uptime: new Date(1000 * process.uptime()).toISOString().substr(11, 8),
       uptime_raw: process.uptime()
     }
   }
