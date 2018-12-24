@@ -1,13 +1,14 @@
 {
-  "name": "dc-protocol",
-  "version": "0.1.45",
+  "name": "@daocasino/dc-protocol",
+  "version": "0.2.3",
   "description": "Start ganache and deploy our contracts",
   "main": "index.js",
   "bin": {
-    "dc-protocol": "bin/CLI"
+    "@daocasino/dc-protocol": "bin/CLI"
   },
   "scripts": {
     "start": "cd src && sh testrpc.sh | sh migrate.sh local",
+    "test:safe": "cd src && ts-node testrpc.ts",
     "test": "cd src && total_accounts=2 blockTime=0 sh testrpc.sh | sh migrate.sh local",
     "build": "cd src && truffle compile",
     "migrate:local": "cd ./src && truffle migrate --network development",
@@ -32,7 +33,9 @@
   "author": "alex.step@dao.casino",
   "license": "MIT",
   "dependencies": {
+    "args-parser": "^1.1.0",
     "commander": "^2.19.0",
+    "fs-extra": "^7.0.1",
     "ganache-core": "2.2.1",
     "truffle": "5.0.0-beta.2",
     "truffle-hdwallet-provider": "1.0.0-web3one.0"
