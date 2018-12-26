@@ -1,6 +1,6 @@
 {
   "name": "@daocasino/dc-protocol",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Start ganache and deploy our contracts",
   "main": "index.js",
   "bin": {
